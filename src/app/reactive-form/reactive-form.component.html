@@ -145,15 +145,16 @@
       </div>
 
     </div>
-    <table>
+    <table class="table table-hover">
 
       <thead class="thead-light">
         <tr>
-          <th scope="col"  >First Name</th> &nbsp;&nbsp;
-          <th scope="col"  >Last Name</th> &nbsp;&nbsp;
-          <th scope="col">Email</th> &nbsp;&nbsp;
-          <th scope="col">password</th> &nbsp;&nbsp;
+          <th scope="col"  >FirstName</th> 
+          <th scope="col"  >LastName</th> 
+          <th scope="col">Email</th> 
+          <th scope="col">password</th> 
           <th scope="col">Gender</th>
+          <th scope="col">Mobile</th>
 
         </tr>
       </thead>
@@ -166,7 +167,8 @@
         <td class="text-center">{{user.email}}</td>
         <td class="text-center">{{user.password}}</td>
         <td class="text-center">{{user.gender}}</td>
-        
+        <td class="text-center">{{user.mobNum}}</td>
+
       </tr>
     </tbody>
   </table>

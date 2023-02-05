@@ -17,6 +17,6 @@ export interface UserTypes {
   email:string;
   password:string;
   gender:string;
-  
+  mobNum: number;
 }
 

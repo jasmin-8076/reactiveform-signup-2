@@ -37,7 +37,7 @@ export class ReactiveFormComponent implements OnInit {
         firstName : new FormControl("", Validators.required),
         lastName:new FormControl("",Validators.required),
         email: new FormControl("", [Validators.required, Validators.email]),
-        mobNum: new FormControl(null,Validators.required),
+        mobNum: new FormControl(null,[Validators.required, Validators.maxLength(10)]),
         gender: new FormControl("male", Validators.required)
         ,
         password: new FormControl("", [
@@ -71,10 +71,10 @@ export class ReactiveFormComponent implements OnInit {
         var email=this.registerForm.value.email
         var password=this.registerForm.value.password
         var gender=this.registerForm.value.gender
-        this.userList.push({firstName: f_name, lastName: l_name,email:email,password:password,gender:gender})
-        alert(
-          "Form Submitted succesfully!!!\n Check the values in browser console."
-        );
+        var mobnum=this.registerForm.value.mobNum
+
+        this.userList.push({firstName: f_name, lastName: l_name,email:email,password:password,gender:gender, mobNum: mobnum})
+        
         console.log(this.userList);
       }
   }
