@@ -5,26 +5,27 @@
         <h3 class="display-5">Sign up</h3>
       </div>
       <div class="card-body">
-        <form 
+        <form
           [formGroup]="registerForm"
           (ngSubmit)="onSubmit()"
           autocomplete="off"
         >
-          <div class="mb-3">
-            <label for="FirstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" formControlName="firstName" />
-            <span
-              class="text-danger"
-              *ngIf="
-                  (registerFormControl.firstName.touched || submitted) &&
-                  registerFormControl.firstName.errors?.['required']"
-            >
-              FirstName is required
-            </span>
-          </div>
+        <div class="mb-3">
+          <label for="FirstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" formControlName="firstName" />
+          <span
+            class="text-danger"
+            *ngIf="
+                (registerFormControl.firstName.touched || submitted) &&
+                registerFormControl.firstName.errors?.['required']"
+          >
+            FirstName is required
+          </span>
+        </div>
+          
 
           <div class="mb-3">
-            <label for="LastName" class="form-label">Last Name</label>
+            <label for="lastName" class="form-label">Last Name</label>
             <input type="text" class="form-control" formControlName="lastName" />
             <span
               class="text-danger"
@@ -32,11 +33,9 @@
                   (registerFormControl.lastName.touched || submitted) &&
                   registerFormControl.lastName.errors?.['required']"
             >
-              LasttName is required
+              Last Name is required
             </span>
           </div>
-
-
           <div class="mb-3">
             <label for="Email" class="form-label">Email</label>
             <input type="text" class="form-control" formControlName="email" />
@@ -59,18 +58,17 @@
           </div>
           
           <div class="mb-3">
-            <label for="Number" class="form-label">Number</label>
+            <label for="mobNum" class="form-label">Number</label>
             <input type="number" class="form-control" formControlName="mobNum" />
             <span
               class="text-danger"
               *ngIf="
                   (registerFormControl.mobNum.touched || submitted) &&
-                  registerFormControl.mobNum.errors?.['required']" 
+                  registerFormControl.mobNum.errors?.['required']"
             >
-              Number required
+              Phone number required
             </span>
           </div>
-
 
           <div class="mb-3">
             <label for="Password" class="form-label">Password</label>
@@ -90,7 +88,6 @@
             <span
               class="text-danger"
               *ngIf="
-
                   registerFormControl.password.touched &&
                   registerFormControl.password.errors?.['invalidPassword']"
             >
@@ -125,22 +122,29 @@
             </span>
           </div>
 
-          <!-- <div class="mb-3">
+          <div class="mb-3">
           <label for="gender" class="form-label">Gender</label> &nbsp;
     
             <input id="male" type="radio" name="gender" formControlName="gender" value="male"/>
             <label class="radio-label" for="male"> Male</label> &nbsp;
             <input id="female" type="radio" name="gender" formControlName="gender" value="female"/>
             <label class="radio-label" for="female">Female</label>
-        </div> -->
-         
-        <!-- <div class="mb-3">
-         <input type="checkbox" id="terms" formControlName="terms" value="agreed" > &nbsp;Agree terms and conditions
+        </div>
 
-        </div> -->
+        <div class="mb-3">
+          <input type="checkbox" id="terms" formControlName="terms" value="agreed" > &nbsp;Agree terms and conditions
+ 
+         </div>
+
           <div align="right">
-            <button [disabled]="!registerForm.valid" type="submit" class="btn btn-success">Submit</button>
-            
+            <button type="submit" [disabled] = "!registerForm.valid" class="btn btn-success">Submit</button>
+            <button
+              type="reset"
+              class="btn btn-danger ms-2"
+              (click)="resetForm()"
+            >
+              Reset
+            </button>
           </div>
         </form>
       </div>

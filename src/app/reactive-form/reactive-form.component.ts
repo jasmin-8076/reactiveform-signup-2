@@ -15,6 +15,8 @@ import { UserNameValidationService } from "../services/user-name-validation.serv
   styleUrls: ["./reactive-form.component.scss"],
 })
 export class ReactiveFormComponent implements OnInit {
+
+  dataArray: Array<UserRegistration>= []
   protected registerForm!: FormGroup<UserRegistration>;
   protected submitted = false;
 
@@ -33,18 +35,18 @@ export class ReactiveFormComponent implements OnInit {
       {
       
         firstName : new FormControl("", Validators.required),
-        lastName : new FormControl("", Validators.required),
+        lastName:new FormControl("",Validators.required),
         email: new FormControl("", [Validators.required, Validators.email]),
         mobNum: new FormControl(null,Validators.required),
-
         gender: new FormControl("male", Validators.required)
         ,
         password: new FormControl("", [
           Validators.required,
           this.customValidator.patternValidator(),
+
         ]),
         confirmPassword: new FormControl("", [Validators.required]),
-        term:new FormControl("",Validators.required)
+        terms:new FormControl("",Validators.required)
       },
       {
         validators: [
@@ -57,22 +59,21 @@ export class ReactiveFormComponent implements OnInit {
   protected get registerFormControl() {
     return this.registerForm.controls;
   }
-  
-  
-  
-  
-  
+
   protected onSubmit(): void {
     this.submitted = true;
-    if (this.registerForm.valid) {
-      
 
+    
+    
+    if (this.registerForm.valid) {
       alert(
         "Form Submitted succesfully!!!\n Check the values in browser console."
       );
-      console.table(this.registerForm.value);
+      console.log(typeof(this.registerForm.value));
     }
   }
 
-
+  protected resetForm(): void {
+    this.registerForm.reset();
+  }
 }
