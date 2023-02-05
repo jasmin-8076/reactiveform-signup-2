@@ -5,7 +5,7 @@ import {
   NonNullableFormBuilder,
   FormControl,
 } from "@angular/forms";
-import { UserRegistration } from "../models/userRegistration";
+import { UserRegistration, UserTypes } from "../models/userRegistration";
 import { CustomvalidationService } from "../services/customvalidation.service";
 import { UserNameValidationService } from "../services/user-name-validation.service";
 
@@ -16,7 +16,7 @@ import { UserNameValidationService } from "../services/user-name-validation.serv
 })
 export class ReactiveFormComponent implements OnInit {
 
-  dataArray: Array<UserRegistration>= []
+  protected userList : Array<UserTypes> = [];
   protected registerForm!: FormGroup<UserRegistration>;
   protected submitted = false;
 
@@ -61,16 +61,22 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   protected onSubmit(): void {
-    this.submitted = true;
+      this.submitted = true;
 
-    
-    
-    if (this.registerForm.valid) {
-      alert(
-        "Form Submitted succesfully!!!\n Check the values in browser console."
-      );
-      console.log(typeof(this.registerForm.value));
-    }
+      
+      if (this.registerForm.valid) {
+
+        var f_name = this.registerForm.value.firstName
+        var l_name = this.registerForm.value.lastName
+        var email=this.registerForm.value.email
+        var password=this.registerForm.value.password
+        var gender=this.registerForm.value.gender
+        this.userList.push({firstName: f_name, lastName: l_name,email:email,password:password,gender:gender})
+        alert(
+          "Form Submitted succesfully!!!\n Check the values in browser console."
+        );
+        console.log(this.userList);
+      }
   }
 
   protected resetForm(): void {

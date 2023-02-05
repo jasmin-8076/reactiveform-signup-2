@@ -11,3 +11,12 @@ export interface UserRegistration {
   terms: FormControl<string>;
 }
 
+export interface UserTypes {
+  firstName: string;
+  lastName: string;
+  email:string;
+  password:string;
+  gender:string;
+  
+}
+
