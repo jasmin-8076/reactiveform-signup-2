@@ -1,7 +1,10 @@
 export class User {
-    public name: string;
+    public firstName: string;
+    public lastName: string;
     public email: string;
-    public username: string;
+    public mobNum: number;
+    public gender:string;
     public password: string;
+
     public confirmPassword: string;
 }

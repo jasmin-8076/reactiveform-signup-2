@@ -2,26 +2,41 @@
   <div class="col-md-6 mx-auto">
     <div class="card">
       <div class="card-header">
-        <h3 class="display-5">Reactive Form</h3>
+        <h3 class="display-5">Sign up</h3>
       </div>
       <div class="card-body">
-        <form
+        <form 
           [formGroup]="registerForm"
           (ngSubmit)="onSubmit()"
           autocomplete="off"
         >
           <div class="mb-3">
-            <label for="Name" class="form-label">Name</label>
-            <input type="text" class="form-control" formControlName="name" />
+            <label for="FirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName" />
             <span
               class="text-danger"
               *ngIf="
-                  (registerFormControl.name.touched || submitted) &&
-                  registerFormControl.name.errors?.['required']"
+                  (registerFormControl.firstName.touched || submitted) &&
+                  registerFormControl.firstName.errors?.['required']"
             >
-              Name is required
+              FirstName is required
             </span>
           </div>
+
+          <div class="mb-3">
+            <label for="LastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName" />
+            <span
+              class="text-danger"
+              *ngIf="
+                  (registerFormControl.lastName.touched || submitted) &&
+                  registerFormControl.lastName.errors?.['required']"
+            >
+              LasttName is required
+            </span>
+          </div>
+
+
           <div class="mb-3">
             <label for="Email" class="form-label">Email</label>
             <input type="text" class="form-control" formControlName="email" />
@@ -42,31 +57,21 @@
               Enter a valid email address
             </span>
           </div>
+          
           <div class="mb-3">
-            <label for="User Name" class="form-label">User Name</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="username"
-            />
+            <label for="Number" class="form-label">Number</label>
+            <input type="number" class="form-control" formControlName="mobNum" />
             <span
               class="text-danger"
               *ngIf="
-                  (registerFormControl.username.touched || submitted) &&
-                  registerFormControl.username.errors?.['required']"
+                  (registerFormControl.mobNum.touched || submitted) &&
+                  registerFormControl.mobNum.errors?.['required']" 
             >
-              User Name is required
-            </span>
-            <span
-              class="text-danger"
-              *ngIf="
-                  registerFormControl.username.touched &&
-                  registerFormControl.username.errors?.['userNameNotAvailable']
-                "
-            >
-              User Name is not available
+              Number required
             </span>
           </div>
+
+
           <div class="mb-3">
             <label for="Password" class="form-label">Password</label>
             <input
@@ -85,6 +90,7 @@
             <span
               class="text-danger"
               *ngIf="
+
                   registerFormControl.password.touched &&
                   registerFormControl.password.errors?.['invalidPassword']"
             >
@@ -118,15 +124,23 @@
               Passwords doesnot match
             </span>
           </div>
+
+          <!-- <div class="mb-3">
+          <label for="gender" class="form-label">Gender</label> &nbsp;
+    
+            <input id="male" type="radio" name="gender" formControlName="gender" value="male"/>
+            <label class="radio-label" for="male"> Male</label> &nbsp;
+            <input id="female" type="radio" name="gender" formControlName="gender" value="female"/>
+            <label class="radio-label" for="female">Female</label>
+        </div> -->
+         
+        <!-- <div class="mb-3">
+         <input type="checkbox" id="terms" formControlName="terms" value="agreed" > &nbsp;Agree terms and conditions
+
+        </div> -->
           <div align="right">
-            <button type="submit" class="btn btn-success">Register</button>
-            <button
-              type="reset"
-              class="btn btn-danger ms-2"
-              (click)="resetForm()"
-            >
-              Reset
-            </button>
+            <button [disabled]="!registerForm.valid" type="submit" class="btn btn-success">Submit</button>
+            
           </div>
         </form>
       </div>

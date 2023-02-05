@@ -24,24 +24,27 @@ export class ReactiveFormComponent implements OnInit {
     private readonly userNameValidationService: UserNameValidationService
   ) {}
 
+
+  // mobileNum: new FormControl("",Validators.required),
+  // firstName: new FormControl("", Validators.required),
+  // secondName:new FormControl("",Validators.required),
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
-        name: new FormControl("", Validators.required),
+      
+        firstName : new FormControl("", Validators.required),
+        lastName : new FormControl("", Validators.required),
         email: new FormControl("", [Validators.required, Validators.email]),
-        username: new FormControl("", {
-          asyncValidators: [
-            this.userNameValidationService.validate.bind(
-              this.userNameValidationService
-            ),
-          ],
-          validators: [Validators.required],
-        }),
+        mobNum: new FormControl(null,Validators.required),
+
+        gender: new FormControl("male", Validators.required)
+        ,
         password: new FormControl("", [
           Validators.required,
           this.customValidator.patternValidator(),
         ]),
         confirmPassword: new FormControl("", [Validators.required]),
+        term:new FormControl("",Validators.required)
       },
       {
         validators: [
@@ -54,11 +57,16 @@ export class ReactiveFormComponent implements OnInit {
   protected get registerFormControl() {
     return this.registerForm.controls;
   }
-
+  
+  
+  
+  
+  
   protected onSubmit(): void {
     this.submitted = true;
-
     if (this.registerForm.valid) {
+      
+
       alert(
         "Form Submitted succesfully!!!\n Check the values in browser console."
       );
@@ -66,7 +74,5 @@ export class ReactiveFormComponent implements OnInit {
     }
   }
 
-  protected resetForm(): void {
-    this.registerForm.reset();
-  }
+
 }
